@@ -101,6 +101,8 @@ class OpenAIClient extends BaseClient {
       this.options.modelOptions,
     );
 
+    console.log(this.modelOptions);
+
     this.defaultVisionModel = this.options.visionModel ?? 'gpt-4-vision-preview';
     if (typeof this.options.attachments?.then === 'function') {
       this.options.attachments.then((attachments) => this.checkVisionRequest(attachments));
@@ -1338,6 +1340,8 @@ ${convo}
           modelOptions,
         });
       }
+
+      modelOptions.conversation_id = this.conversationId;
 
       const streamRate = this.options.streamRate ?? Constants.DEFAULT_STREAM_RATE;
 
